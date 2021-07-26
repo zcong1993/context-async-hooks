@@ -1,6 +1,6 @@
 {
-  "name": "@zcong/__package_name__",
-  "version": "0.0.0",
+  "name": "@zcong/context-async-hooks",
+  "version": "0.0.0-dev",
   "description": "my cool project",
   "main": "./dist/index.js",
   "files": [
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
+    "@types/semver": "^7.3.8",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.27.0",
@@ -45,5 +46,11 @@
       "yarn format",
       "git add ."
     ]
+  },
+  "engines": {
+    "node": ">=8.1.0"
+  },
+  "dependencies": {
+    "semver": "^7.3.5"
   }
 }

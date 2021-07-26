@@ -1,17 +1,17 @@
-# __package_name__
+# context-async-hooks
 
-<!-- [![NPM version](https://img.shields.io/npm/v/@zcong/__package_name__.svg?style=flat)](https://npmjs.com/package/@zcong/__package_name__) -->
-<!-- [![NPM downloads](https://img.shields.io/npm/dm/@zcong/__package_name__.svg?style=flat)](https://npmjs.com/package/@zcong/__package_name__) -->
-<!-- [![codecov](https://codecov.io/gh/zcong1993/__package_name__/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/__package_name__) -->
+<!-- [![NPM version](https://img.shields.io/npm/v/@zcong/context-async-hooks.svg?style=flat)](https://npmjs.com/package/@zcong/context-async-hooks) -->
+<!-- [![NPM downloads](https://img.shields.io/npm/dm/@zcong/context-async-hooks.svg?style=flat)](https://npmjs.com/package/@zcong/context-async-hooks) -->
+<!-- [![codecov](https://codecov.io/gh/zcong1993/context-async-hooks/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/context-async-hooks) -->
 
 > my cool project
 
 ## Install
 
 ```bash
-$ yarn add @zcong/__package_name__
+$ yarn add @zcong/context-async-hooks
 # or npm
-$ npm i @zcong/__package_name__ --save
+$ npm i @zcong/context-async-hooks --save
 ```
 
 ## License
