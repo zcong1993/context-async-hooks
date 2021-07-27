@@ -6,6 +6,7 @@ import { ContextManager } from './types'
 
 export const AsyncHooksContextManager = Ahcm
 export const AsyncLocalStorageContextManager = Alscm
+export * from './types'
 
 // https://github.com/open-telemetry/opentelemetry-js/pull/1525
 export const createAsyncContextManager = <Context>(
