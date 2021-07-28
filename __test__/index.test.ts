@@ -4,6 +4,7 @@ import {
   AsyncHooksContextManager,
   AsyncLocalStorageContextManager,
   createAsyncContextManager,
+  ImmutableContext,
 } from '../src'
 import { ContextManager } from '../src/types'
 
@@ -455,6 +456,59 @@ describe.each([AsyncLocalStorageContextManager, AsyncHooksContextManager])(
           return done()
         })
         expect(contextManager.active()).toStrictEqual(rootScope)
+      })
+    })
+
+    describe('ImmutableContext', () => {
+      interface TestCtx {
+        test: string
+        num?: number
+      }
+
+      it('should works', (done) => {
+        const ctx1 = new ImmutableContext<TestCtx>({ test: 'ctx1' })
+        contextManager.with(ctx1, () => {
+          expect(contextManager.active()).toStrictEqual(ctx1)
+          const ctx2 = ctx1.setValue('num', 18)
+          contextManager.with(ctx2, () => {
+            expect(contextManager.active()).toStrictEqual(ctx2)
+            expect(contextManager.active().getValue('test')).toEqual('ctx1')
+            expect(contextManager.active().getValue('num')).toEqual(18)
+
+            const ctx3 = ctx2.deleteValue('num')
+            contextManager.with(ctx3, () => {
+              expect(contextManager.active()).toStrictEqual(ctx3)
+              expect(contextManager.active().getValue('test')).toEqual('ctx1')
+              expect(contextManager.active().getValue('num')).toBeUndefined()
+              expect(contextManager.active().unwrap()).toStrictEqual(
+                ctx1.unwrap()
+              )
+            })
+          })
+          expect(contextManager.active()).toStrictEqual(ctx1)
+          expect(contextManager.active().getValue('test')).toEqual('ctx1')
+          expect(contextManager.active().getValue('num')).toBeUndefined()
+          return done()
+        })
+      })
+
+      it('without ImmutableContext should cause shallow copy', (done) => {
+        const ctx1: TestCtx = { test: 'ctx1' }
+        contextManager.with(ctx1, () => {
+          expect(contextManager.active()).toStrictEqual(ctx1)
+          const ctx2 = ctx1
+          ctx2.num = 18
+          contextManager.with(ctx2, () => {
+            expect(contextManager.active()).toStrictEqual(ctx2)
+            expect(contextManager.active().test).toEqual('ctx1')
+            expect(contextManager.active().num).toEqual(18)
+          })
+          expect(contextManager.active()).toStrictEqual(ctx1)
+          expect(contextManager.active().test).toEqual('ctx1')
+          // old context seems not 'restore'
+          expect(contextManager.active().num).toBe(18)
+          return done()
+        })
       })
     })
   }
