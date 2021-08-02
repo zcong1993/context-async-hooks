@@ -4,7 +4,7 @@
 [![NPM downloads](https://img.shields.io/npm/dm/@zcong/context-async-hooks.svg?style=flat)](https://npmjs.com/package/@zcong/context-async-hooks)
 [![codecov](https://codecov.io/gh/zcong1993/context-async-hooks/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/context-async-hooks)
 
-> OpenTelemetry AsyncHooks-based Context Manager for al
+> OpenTelemetry AsyncHooks-based Context Manager for all
 
 ## Install
 
