@@ -1,3 +1,5 @@
+## [0.2.1](https://github.com/zcong1993/context-async-hooks/compare/v0.2.0...v0.2.1) (2021-10-12)
+
 # [0.2.0](https://github.com/zcong1993/context-async-hooks/compare/v0.1.2...v0.2.0) (2021-07-28)
 
 ### Features
