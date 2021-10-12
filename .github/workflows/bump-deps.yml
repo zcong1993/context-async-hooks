@@ -1,0 +1,52 @@
+name: Bump Deps
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Bump Deps
+    runs-on: ubuntu-18.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Config git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+      - name: Bump Deps
+        run: |
+          pnpx npm-check-updates -u
+          pnpm i
+      - name: Commit Changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -am "Update hugo version"
+          else
+            echo "no changes";
+          fi
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "chore(deps): bump deps"
+          branch: "deps/bump"
+          title: "chore(deps): bump deps"
+          delete-branch: true
+      - name: Check Outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
