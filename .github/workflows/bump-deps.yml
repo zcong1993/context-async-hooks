@@ -1,6 +1,11 @@
 name: Bump Deps
 on:
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: "false"
 
 jobs:
   release:
@@ -27,6 +32,9 @@ jobs:
           node-version: '16'
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
       - name: Bump Deps
         run: |
           npx npm-check-updates -u
