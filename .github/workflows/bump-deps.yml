@@ -34,11 +34,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled == 'true' }}
       - name: Bump Deps
         run: |
           npx npm-check-updates -u
-          pnpm i
+          pnpm i --lockfile-only
       - name: Commit Changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
