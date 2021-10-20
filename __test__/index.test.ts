@@ -11,9 +11,9 @@ import { ContextManager } from '../src/types'
 it('createAsyncContextManager should work', () => {
   const cm = createAsyncContextManager()
   if (semver.lt(process.version, '14.8.0')) {
-    expect(cm).toBeInstanceOf(AsyncHooksContextManager)
+    expect(cm).toBeInstanceOf(AsyncHooksContextManager) // eslint-disable-line jest/no-conditional-expect
   } else {
-    expect(cm).toBeInstanceOf(AsyncLocalStorageContextManager)
+    expect(cm).toBeInstanceOf(AsyncLocalStorageContextManager) // eslint-disable-line jest/no-conditional-expect
   }
 })
 
@@ -117,7 +117,7 @@ describe.each([AsyncLocalStorageContextManager, AsyncHooksContextManager])(
         })
       })
 
-      it('should finally restore an old context', (done) => {
+      it('should finally restore an old context 1', (done) => {
         const ctx1 = { [key1]: 'ctx1' }
         contextManager.with(ctx1, () => {
           expect(contextManager.active()).toStrictEqual(ctx1)

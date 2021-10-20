@@ -47,7 +47,7 @@ export class AsyncHooksContextManager<
   ): ReturnType<F> {
     this._enterContext(context)
     try {
-      return fn.call(thisArg!, ...args)
+      return fn.call(thisArg, ...args)
     } finally {
       this._exitContext()
     }
