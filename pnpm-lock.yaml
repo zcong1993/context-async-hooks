@@ -10,7 +10,7 @@ specifiers:
   eslint: ^8.0.1
   eslint-config-prettier: ^8.3.0
   eslint-plugin-import: ^2.25.2
-  eslint-plugin-jest: ^26.0.0
+  eslint-plugin-jest: ^27.0.0
   husky: ^8.0.0
   jest: ^28.0.0
   lint-staged: ^13.0.0
@@ -32,7 +32,7 @@ devDependencies:
   eslint: 8.0.1
   eslint-config-prettier: 8.3.0_eslint@8.0.1
   eslint-plugin-import: 2.25.2_pbvesreejjxjgosdry6fonzi54
-  eslint-plugin-jest: 26.1.1_oebczajbtcoxlfw5syeornoifm
+  eslint-plugin-jest: 27.0.4_oebczajbtcoxlfw5syeornoifm
   husky: 8.0.0
   jest: 28.0.3_@types+node@16.11.1
   lint-staged: 13.0.0
@@ -1554,8 +1554,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -1873,12 +1873,12 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jest/26.1.1_oebczajbtcoxlfw5syeornoifm:
-    resolution: {integrity: sha512-HRKOuPi5ADhza4ZBK5ufyNXy28bXXkib87w+pQqdvBhSTsamndh6sIAKPAUl8y0/n9jSWBdTPslrwtKWqkp8dA==}
-    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
+  /eslint-plugin-jest/27.0.4_oebczajbtcoxlfw5syeornoifm:
+    resolution: {integrity: sha512-BuvY78pHMpMJ6Cio7sKg6jrqEcnRYPUc4Nlihku4vKx3FjlmMINSX4vcYokZIe+8TKcyr1aI5Kq7vYwgJNdQSA==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      eslint: ^7.0.0 || ^8.0.0
       jest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
