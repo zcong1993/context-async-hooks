@@ -40,7 +40,7 @@ jobs:
           fi
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "chore(deps): bump deps"
           branch: "deps/bump"
